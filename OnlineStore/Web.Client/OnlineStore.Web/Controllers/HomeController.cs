@@ -1,8 +1,8 @@
-﻿using FrontendMVC.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using OnlineStore.Web.Models;
 using System.Diagnostics;
 
-namespace FrontendMVC.Controllers
+namespace OnlineStore.Web.Controllers
 {
     public class HomeController : Controller
     {

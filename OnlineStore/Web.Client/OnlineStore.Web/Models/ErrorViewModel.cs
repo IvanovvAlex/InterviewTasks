@@ -1,4 +1,4 @@
-namespace FrontendMVC.Models
+namespace OnlineStore.Web.Models
 {
     public class ErrorViewModel
     {
