@@ -5,18 +5,22 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Client", "Web.Client", "{49A3CFFA-928D-49F0-A156-412BD994B2E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Web", "Web.Client\OnlineStore.Web\OnlineStore.Web.csproj", "{5347F648-B5E4-45EF-A046-9F2477002863}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Web", "Web.Client\OnlineStore.Web\OnlineStore.Web.csproj", "{5347F648-B5E4-45EF-A046-9F2477002863}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.API", "Web.API", "{AC1DAB68-700E-491D-B21E-F0999570AACA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.API", "Web.API\OnlineStore.API\OnlineStore.API.csproj", "{DF0645FC-509E-4DF0-9D75-863EDB6CFBD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.API", "Web.API\OnlineStore.API\OnlineStore.API.csproj", "{DF0645FC-509E-4DF0-9D75-863EDB6CFBD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Data", "Web.API\OnlineStore.Data\OnlineStore.Data.csproj", "{31D03F9F-2D1B-4113-84B4-AA937CECAB5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.Data", "Web.API\OnlineStore.Data\OnlineStore.Data.csproj", "{31D03F9F-2D1B-4113-84B4-AA937CECAB5F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6D48DD59-6B39-4881-8CD5-F2EBC2BB9B3D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Domain", "Web.API\OnlineStore.Domain\OnlineStore.Domain.csproj", "{4450AA62-AE15-4D4F-9E82-570A1A3B2F14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Common", "Web.API\OnlineStore.Common\OnlineStore.Common.csproj", "{503D7953-EDAE-41C1-9FB0-21F800C22AD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,14 @@ Global
 		{31D03F9F-2D1B-4113-84B4-AA937CECAB5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31D03F9F-2D1B-4113-84B4-AA937CECAB5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31D03F9F-2D1B-4113-84B4-AA937CECAB5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4450AA62-AE15-4D4F-9E82-570A1A3B2F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4450AA62-AE15-4D4F-9E82-570A1A3B2F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4450AA62-AE15-4D4F-9E82-570A1A3B2F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4450AA62-AE15-4D4F-9E82-570A1A3B2F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{503D7953-EDAE-41C1-9FB0-21F800C22AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{503D7953-EDAE-41C1-9FB0-21F800C22AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{503D7953-EDAE-41C1-9FB0-21F800C22AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{503D7953-EDAE-41C1-9FB0-21F800C22AD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +56,8 @@ Global
 		{5347F648-B5E4-45EF-A046-9F2477002863} = {49A3CFFA-928D-49F0-A156-412BD994B2E9}
 		{DF0645FC-509E-4DF0-9D75-863EDB6CFBD3} = {AC1DAB68-700E-491D-B21E-F0999570AACA}
 		{31D03F9F-2D1B-4113-84B4-AA937CECAB5F} = {AC1DAB68-700E-491D-B21E-F0999570AACA}
+		{4450AA62-AE15-4D4F-9E82-570A1A3B2F14} = {AC1DAB68-700E-491D-B21E-F0999570AACA}
+		{503D7953-EDAE-41C1-9FB0-21F800C22AD1} = {AC1DAB68-700E-491D-B21E-F0999570AACA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51EA4D78-C7DF-484F-8359-196E13F538EC}
