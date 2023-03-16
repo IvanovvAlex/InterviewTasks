@@ -1,0 +1,19 @@
+﻿@model IEnumerable<OnlineStore.Common.Responses.CompanyResponses.GetAllCompaniesResponse>
+
+@{
+}
+@foreach (var item in Model)
+{
+    <!-- Post preview-->
+    <div class="post-preview">
+        <a asp-controller="Company" asp-action="Details" asp-route-id="@item.Id">
+            
+            <h4 class="post-title">@item.Name</h4>
+            <h6 class="post-subtitle">@item.OwnerFullName</h6>
+            <h6 class="post-subtitle">@item.UniqueIdentificationCode</h6>
+
+        </a>
+    </div>
+    <!-- Divider-->
+    <hr class="my-4" />
+}

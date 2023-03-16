@@ -1,7 +1,22 @@
+using OnlineStore.Web.Infrastructure.Interfaces;
+using OnlineStore.Web.Infrastructure.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddTransient<ICompanyService, CompanyService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<IProductService, ProductService>();
+
+builder.Services.AddHttpClient("api", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7264/api/");
+    // configure other settings if needed
+});
+
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 

@@ -2,6 +2,9 @@ using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using OnlineStore.API.Logger;
+using OnlineStore.API.Middlewares;
 using OnlineStore.Data;
 using OnlineStore.Data.Interfaces;
 using OnlineStore.Data.Interfaces.Repositories;
@@ -38,6 +41,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
+
+
 var app = builder.Build();
 
 // Create the database if it doesn't exist
@@ -66,5 +71,16 @@ app.UseCors(x => x
 app.UseAuthorization();
 
 app.MapControllers();
+
+var logFilePath = "./Logger/Requests.log";
+var fileLoggerProvider = new FileLoggerProvider(logFilePath);
+var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder.AddProvider(fileLoggerProvider);
+});
+var logger = loggerFactory.CreateLogger("Requests");
+
+// Register the middleware that logs each request
+app.UseMiddleware<RequestLoggingMiddleware>(logger);
 
 app.Run();

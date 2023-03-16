@@ -13,12 +13,12 @@ namespace OnlineStore.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
 
-        public ProductController(IProductService productService, IMapper mapper)
+        public ProductsController(IProductService productService, IMapper mapper)
         {
             _productService = productService;
             _mapper = mapper;
@@ -43,8 +43,8 @@ namespace OnlineStore.API.Controllers
             return allProductsResponse;
         }
 
-        [HttpGet("GetById")]
-        public async Task<ProductResponse> GetById(string id)
+        [HttpGet("Details")]
+        public async Task<ProductResponse> Details(string id)
         {
             Product product = await _productService.GetById(id);
 

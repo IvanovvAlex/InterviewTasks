@@ -6,6 +6,22 @@
     <title>@ViewData["Title"] - OnlineStore.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/Company/Index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Company/Create.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Company/Details.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Company/Update.css" asp-append-version="true" />
+    
+    <link rel="stylesheet" href="~/css/Order/Index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Order/Create.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Order/Details.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Order/Update.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/Product/Index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Product/Create.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Product/Details.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Product/Update.css" asp-append-version="true" />
+
     <link rel="stylesheet" href="~/OnlineStore.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -23,7 +39,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Companies" asp-action="Index">Companies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
                         </li>
                     </ul>
                 </div>

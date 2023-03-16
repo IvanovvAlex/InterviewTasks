@@ -11,12 +11,12 @@ namespace OnlineStore.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : ControllerBase
+    public class CompaniesController : ControllerBase
     {
         private readonly ICompanyService _companyService;
         private readonly IMapper _mapper;
 
-        public CompanyController(ICompanyService companyService, IMapper mapper)
+        public CompaniesController(ICompanyService companyService, IMapper mapper)
         {
             _companyService = companyService;
             _mapper = mapper;
@@ -41,8 +41,8 @@ namespace OnlineStore.API.Controllers
             return allCompaniesResponse;
         }
 
-        [HttpGet("GetById")]
-        public async Task<CompanyResponse> GetById(string id)
+        [HttpGet("Details")]
+        public async Task<CompanyResponse> Details(string id)
         {
             Company company = await _companyService.GetById(id);
 
