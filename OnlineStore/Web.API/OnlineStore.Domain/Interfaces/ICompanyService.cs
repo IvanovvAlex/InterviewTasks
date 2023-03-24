@@ -7,9 +7,9 @@ namespace OnlineStore.Domain.Interfaces
 {
     public interface ICompanyService
     {
-        Task<Company> Create(Company newCompany);
+        Task<Company> Create(string request);
 
-        Task<Company> Update(Company request);
+        Task<Company> Update(string request);
 
         Task Delete(string id);
 

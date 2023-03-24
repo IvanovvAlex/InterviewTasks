@@ -1,8 +1,6 @@
-﻿using Azure.Core;
-using OnlineStore.Common.Requests.CompanyRequests;
+﻿using OnlineStore.Common.Requests.CompanyRequests;
 using OnlineStore.Common.Responses.CompanyResponses;
 using OnlineStore.Web.Infrastructure.Interfaces;
-using System.Net.Http;
 using System.Text.Json;
 
 namespace OnlineStore.Web.Infrastructure.Services
@@ -36,7 +34,7 @@ namespace OnlineStore.Web.Infrastructure.Services
 
         public async Task Delete(string id)
         {
-            await _httpClient.GetAsync($"/api/Companies/Delete/{id}");
+            await _httpClient.DeleteAsync($"/api/Companies/Delete/{id}");
         }
 
         public async Task<IEnumerable<GetAllCompaniesResponse>> GetAll()

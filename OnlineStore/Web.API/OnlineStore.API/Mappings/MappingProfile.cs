@@ -26,6 +26,9 @@ namespace OnlineStore.API.Mappings
             CreateMap<Company, UpdateCompanyRequest>();
             CreateMap<UpdateCompanyRequest, Company>();
 
+            CreateMap<Company, CompanyWithoutOrdersResponse>();
+            CreateMap<CompanyWithoutOrdersResponse, Company>();
+
             //Product mappings
             CreateMap<CreateProductRequest, Product>();
             CreateMap<Product, CreateProductRequest>();
@@ -38,6 +41,9 @@ namespace OnlineStore.API.Mappings
 
             CreateMap<Product, UpdateProductRequest>();
             CreateMap<UpdateProductRequest, Product>();
+
+            CreateMap<Product, ProductWithoutOrdersResponse>();
+            CreateMap<ProductWithoutOrdersResponse, Product>();
 
             //Order mappings
             CreateMap<CreateOrderRequest, Order>();

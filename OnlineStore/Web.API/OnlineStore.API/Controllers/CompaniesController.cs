@@ -6,6 +6,7 @@ using OnlineStore.Common.Requests.CompanyRequests;
 using OnlineStore.Common.Responses.CompanyResponses;
 using OnlineStore.Data.Entities;
 using OnlineStore.Domain.Interfaces;
+using System.Text.Json;
 
 namespace OnlineStore.API.Controllers
 {
@@ -23,10 +24,10 @@ namespace OnlineStore.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<CompanyResponse> Create(CreateCompanyRequest request)
+        public async Task<CompanyResponse> Create([FromBody] string request)
         {
-            Company company = _mapper.Map<CreateCompanyRequest, Company>(request);
-            CompanyResponse companyResponse = _mapper.Map<Company, CompanyResponse>(await _companyService.Create(company));
+            Company company = await _companyService.Create(request);
+            CompanyResponse companyResponse = _mapper.Map<Company, CompanyResponse>(company);
 
             return companyResponse;
         }
@@ -41,7 +42,7 @@ namespace OnlineStore.API.Controllers
             return allCompaniesResponse;
         }
 
-        [HttpGet("Details")]
+        [HttpGet("Details/{id}")]
         public async Task<CompanyResponse> Details(string id)
         {
             Company company = await _companyService.GetById(id);
@@ -52,18 +53,18 @@ namespace OnlineStore.API.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<CompanyResponse> Update(UpdateCompanyRequest request)
+        public async Task<CompanyResponse> Update([FromBody] string request)
         {
 
-            Company company = await _companyService.Update(_mapper.Map<UpdateCompanyRequest, Company>(request));
+            Company company = await _companyService.Update(request);
 
             CompanyResponse companyResponse = _mapper.Map<Company, CompanyResponse>(company);
 
             return companyResponse;
         }
 
-        [HttpDelete("Delete")]
-        public async Task DeleteById(string id)
+        [HttpDelete("Delete/{id}")]
+        public async Task Delete(string id)
         {
             await _companyService.Delete(id);
         }

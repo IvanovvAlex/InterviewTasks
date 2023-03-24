@@ -50,7 +50,9 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var dbContext = services.GetService<OnlineStoreDbContext>();
+    //await dbContext.Database.EnsureCreatedAsync();
     await dbContext.Database.MigrateAsync();
+
 }
 
 // Configure the HTTP request pipeline.

@@ -1,6 +1,5 @@
 ﻿using OnlineStore.Common.Requests.OrderRequests;
 using OnlineStore.Common.Responses.OrderResponses;
-using OnlineStore.Data.Entities;
 
 namespace OnlineStore.Web.Infrastructure.Interfaces
 {
@@ -8,7 +7,7 @@ namespace OnlineStore.Web.Infrastructure.Interfaces
     {
         Task<OrderResponse> Create(CreateOrderRequest request);
 
-        Task<OrderResponse> Update(UpdateOrderRequest request);
+        Task<OrderResponse> Update(OrderResponse request);
         
         Task Delete(string id);
         

@@ -9,11 +9,12 @@ namespace OnlineStore.Domain.Interfaces
 {
     public interface IOrderService
     {
-        Task<Order> Create(Order newOrder);
+        Task<Order> Create(string request);
 
-        Task<Order> Update(Order order);
+        Task<Order> Update(string request);
 
         Task Delete(string id); 
+
         Task<Order> GetById(string id);
 
         Task<IEnumerable<Order>> GetAll();

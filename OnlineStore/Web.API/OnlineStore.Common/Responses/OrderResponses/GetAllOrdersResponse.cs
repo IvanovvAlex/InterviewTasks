@@ -20,6 +20,6 @@ namespace OnlineStore.Common.Responses.OrderResponses
 
         public string CompanyId { get; set; }
 
-        public CompanyResponse Company { get; set; }
+        public CompanyWithoutOrdersResponse Company { get; set; }
     }
 }

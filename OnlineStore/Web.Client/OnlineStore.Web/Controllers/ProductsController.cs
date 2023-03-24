@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineStore.Common.Requests.ProductRequests;
 using OnlineStore.Common.Responses.ProductResponses;
+using OnlineStore.Core.Enums;
 using OnlineStore.Web.Infrastructure.Interfaces;
 
 
@@ -24,14 +26,19 @@ namespace OnlineStore.Web.Controllers
 
         public async Task<IActionResult> Create()
         {
-            //ViewData["CategoryId"] = new SelectList(context.Categories, "Id", "Title");
+            ViewData["Types"] = new SelectList(Enum.GetValues(typeof(ProductTypes)));
 
-            return View();
+            return View();  
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateProductRequest request)
+        public async Task<IActionResult> Create([FromForm]CreateProductRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(request);
+            }
+
             ProductResponse response = await _productService.Create(request);
 
             if (response != null)
@@ -53,7 +60,7 @@ namespace OnlineStore.Web.Controllers
 
         public async Task<IActionResult> Update(string id)
         {
-            //ViewData["CategoryId"] = new SelectList(context.Categories, "Id", "Title");
+            ViewData["Types"] = new SelectList(Enum.GetValues(typeof(ProductTypes)));
 
             ProductResponse model = await _productService.GetById(id);
             if (model == null)
@@ -67,13 +74,18 @@ namespace OnlineStore.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(UpdateProductRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(request);
+            }
+
             ProductResponse response = await _productService.Update(request);
             if (response == null)
             {
                 return NotFound();
             }
 
-            return Redirect($"/Products/Details/{response.Id}");
+            return Redirect($"/Products/Details/{request.Id}");
         }
 
         public async Task<IActionResult> Delete(string id)

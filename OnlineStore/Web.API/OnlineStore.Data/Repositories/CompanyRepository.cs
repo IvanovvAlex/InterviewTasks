@@ -43,5 +43,18 @@ namespace OnlineStore.Data.Repositories
 
             return editedCompany;
         }
+        public override async ValueTask<Company> GetByIdAsync(string id)
+        {
+            return await OnlineStoreDbContext.Companies
+                .Include(o => o.Orders)
+                .FirstOrDefaultAsync(o => o.Id == id);
+        }
+
+        public override async Task<IEnumerable<Company>> GetAllAsync()
+        {
+            return await OnlineStoreDbContext.Companies
+                .Include(o => o.Orders)
+                .ToListAsync();
+        }
     }
 }

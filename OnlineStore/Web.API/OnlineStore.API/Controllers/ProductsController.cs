@@ -25,10 +25,10 @@ namespace OnlineStore.API.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<ProductResponse> Create(CreateProductRequest request)
+        public async Task<ProductResponse> Create([FromBody]string request)
         {
-            Product product = _mapper.Map<CreateProductRequest, Product>(request);
-            ProductResponse productResponse = _mapper.Map<Product, ProductResponse>(await _productService.Create(product));
+            Product product = await _productService.Create(request);
+            ProductResponse productResponse = _mapper.Map<Product, ProductResponse>(product);
 
             return productResponse;
         }
@@ -43,7 +43,7 @@ namespace OnlineStore.API.Controllers
             return allProductsResponse;
         }
 
-        [HttpGet("Details")]
+        [HttpGet("Details/{id}")]
         public async Task<ProductResponse> Details(string id)
         {
             Product product = await _productService.GetById(id);
@@ -54,17 +54,16 @@ namespace OnlineStore.API.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<ProductResponse> Update(UpdateProductRequest request)
+        public async Task<ProductResponse> Update([FromBody]string request)
         {
-
-            Product product = await _productService.Update(_mapper.Map<UpdateProductRequest, Product>(request));
+            Product product = await _productService.Update(request);
 
             ProductResponse productResponse = _mapper.Map<Product, ProductResponse>(product);
 
             return productResponse;
         }
 
-        [HttpDelete("Delete")]
+        [HttpDelete("Delete/{id}")]
         public async Task DeleteById(string id)
         {
             await _productService.Delete(id);

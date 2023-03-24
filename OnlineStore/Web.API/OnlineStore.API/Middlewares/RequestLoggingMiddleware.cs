@@ -17,7 +17,7 @@ namespace OnlineStore.API.Middlewares
         {
             // Log the request
             _logger.LogInformation($"Request from {context.Connection.RemoteIpAddress} " +
-                $"at {DateTime.Now}: {context.Request.Method} {context.Request.Path}");
+                $"--> {context.Request.Method} {context.Request.Path}");
 
             // Call the next middleware in the pipeline
             await _next(context);

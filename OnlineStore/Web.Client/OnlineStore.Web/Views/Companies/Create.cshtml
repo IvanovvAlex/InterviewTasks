@@ -1,5 +1,61 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model OnlineStore.Common.Requests.CompanyRequests.CreateCompanyRequest
+
+<h1 class="text-center">Create Company</h1>
+<form class="mx-auto half-width col-5 " asp-controller="Companies" asp-action="Create" method="post">
+    <div class="top-border-line primary-separator"></div>
+    <div class="d-xl-flex ">
+        <container class="m-5">
+            <div class="form-group">
+                <label asp-for="@Model.Name">Name</label>
+                <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Name...">
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.UniqueIdentificationCode">ID Code</label>
+                <input asp-for="@Model.UniqueIdentificationCode" type="text" class="form-control" placeholder="ID Code...">
+                <span asp-validation-for="@Model.UniqueIdentificationCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.OwnerFullName">Owner</label>
+                <input asp-for="@Model.OwnerFullName" type="text" class="form-control" placeholder="Owner...">
+                <span asp-validation-for="@Model.OwnerFullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Capital">Capital</label>
+                <input asp-for="@Model.Capital" type="number" step="0.01" class="form-control" placeholder="Capital...">
+                <span asp-validation-for="@Model.Capital" class="text-danger"></span>
+            </div>
+        </container>
+        <container>
+            <div class="form-group">
+                <label asp-for="@Model.Country">Country</label>
+                <input asp-for="@Model.Country" type="text" class="form-control" placeholder="Country...">
+                <span asp-validation-for="@Model.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.City">City</label>
+                <input asp-for="@Model.City" type="text" class="form-control" placeholder="City...">
+                <span asp-validation-for="@Model.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Address">Address</label>
+                <input asp-for="@Model.Address" type="text" class="form-control" placeholder="Address...">
+                <span asp-validation-for="@Model.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone">Phone</label>
+                <input asp-for="@Model.Phone" type="tel" class="form-control" placeholder="Phone...">
+                <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Email">Email</label>
+                <input asp-for="@Model.Email" type="email" class="form-control" placeholder="Email...">
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            </div>
+        </container>
+    </div>
+    <div class="top-border-line primary-separator"></div>
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>

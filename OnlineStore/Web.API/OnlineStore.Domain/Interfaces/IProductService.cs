@@ -1,4 +1,5 @@
-﻿using OnlineStore.Data.Entities;
+﻿using OnlineStore.Common.Requests.ProductRequests;
+using OnlineStore.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace OnlineStore.Domain.Interfaces
 {
     public interface IProductService
     {
-        Task<Product> Create(Product newProduct);
+        Task<Product> Create(string request);
 
-        Task<Product> Update(Product product);
+        Task<Product> Update(string request);
 
         Task Delete(string id);
 

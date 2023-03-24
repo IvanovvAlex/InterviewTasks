@@ -31,12 +31,24 @@ namespace OnlineStore.Data.Repositories
             }
 
             editedProduct.Name = product.Name;
+            editedProduct.Type = product.Type;
             editedProduct.Description = product.Description;
             editedProduct.Price = product.Price;
             editedProduct.Quantity = product.Quantity;
-            editedProduct.File = product.File;
-
             return editedProduct;
+        }
+        public override async ValueTask<Product> GetByIdAsync(string id)
+        {
+            return await OnlineStoreDbContext.Products
+                .Include(o => o.Orders)
+                .FirstOrDefaultAsync(o => o.Id == id);
+        }
+
+        public override async Task<IEnumerable<Product>> GetAllAsync()
+        {
+            return await OnlineStoreDbContext.Products
+                .Include(o => o.Orders)
+                .ToListAsync();
         }
     }
 }

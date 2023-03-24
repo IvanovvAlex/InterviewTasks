@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -13,17 +14,24 @@ namespace OnlineStore.Domain.Services
     public class OrderService : IOrderService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly JsonSerializerOptions _serializerOptions;
 
         public OrderService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+            _serializerOptions = new JsonSerializerOptions()
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            };
         }
 
-        public async Task<Order> Create(Order newOrder)
+        public async Task<Order> Create(string request)
         {
-            await _unitOfWork.Orders.AddAsync(newOrder);
+            Order order = JsonSerializer.Deserialize<Order>(request, _serializerOptions);
+
+            await _unitOfWork.Orders.AddAsync(order);
             await _unitOfWork.CommitAsync();
-            return newOrder;
+            return order;
         }
 
         public async Task Delete(string id)
@@ -43,8 +51,10 @@ namespace OnlineStore.Domain.Services
             return await _unitOfWork.Orders.GetByIdAsync(id);
         }
 
-        public async Task<Order> Update(Order order)
+        public async Task<Order> Update(string request)
         {
+            Order order = JsonSerializer.Deserialize<Order>(request, _serializerOptions);
+
             await _unitOfWork.Orders.Update(order);
             await _unitOfWork.CommitAsync();
             return order;

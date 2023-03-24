@@ -15,7 +15,7 @@ namespace OnlineStore.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return Redirect("/Companies/");
         }
 
         public IActionResult Privacy()

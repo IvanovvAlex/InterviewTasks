@@ -36,6 +36,10 @@ namespace OnlineStore.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateCompanyRequest request)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(request);
+            }
             CompanyResponse response = await _companyService.Create(request);
 
             if (response != null)
@@ -71,6 +75,10 @@ namespace OnlineStore.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(UpdateCompanyRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(request);
+            }
             CompanyResponse response = await _companyService.Update(request);
             if (response == null)
             {

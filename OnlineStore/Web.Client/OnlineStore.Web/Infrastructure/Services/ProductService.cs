@@ -1,9 +1,8 @@
-﻿using Azure.Core;
-using OnlineStore.Common.Requests.OrderRequests;
-using OnlineStore.Common.Requests.ProductRequests;
-using OnlineStore.Common.Responses.OrderResponses;
+﻿using OnlineStore.Common.Requests.ProductRequests;
+using OnlineStore.Common.Responses.CompanyResponses;
 using OnlineStore.Common.Responses.ProductResponses;
 using OnlineStore.Web.Infrastructure.Interfaces;
+using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace OnlineStore.Web.Infrastructure.Services
@@ -27,6 +26,7 @@ namespace OnlineStore.Web.Infrastructure.Services
             string requestJson = JsonSerializer.Serialize<CreateProductRequest>(request, _serializerOptions);
 
             HttpResponseMessage response = await _httpClient.PostAsJsonAsync("/api/Products/Create", requestJson);
+
             string responseContent = await response.Content.ReadAsStringAsync();
 
             ProductResponse product = JsonSerializer.Deserialize<ProductResponse>(responseContent, _serializerOptions);
@@ -36,7 +36,7 @@ namespace OnlineStore.Web.Infrastructure.Services
 
         public async Task Delete(string id)
         {
-            await _httpClient.GetAsync($"/api/Products/Delete/{id}");
+            await _httpClient.DeleteAsync($"/api/Products/Delete/{id}");
         }
 
         public async Task<IEnumerable<GetAllProductsResponse>> GetAll()

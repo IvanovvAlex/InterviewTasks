@@ -1,5 +1,32 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<OnlineStore.Common.Responses.OrderResponses.GetAllOrdersResponse>
+
 @{
 }
+<div class="container text-center">
+    <a class="btn btn-primary center mt-4 mb-4 w-25" asp-controller="Orders" asp-action="Create">Create new order</a>
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="row">
+                <th scope="col" class="col-lg-3">Date</th>
+                <th scope="col" class="col-lg-5">Company</th>
+                <th scope="col" class="col-lg-3">Total Price</th>
+                <th scope="col" class="col-lg-1"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr class="row">
+                    <td class="col-lg-3">@order.CreationDate</td>
+                    <td class="col-lg-5">@order.Company.Name</td>
+                    <td class="col-lg-3">@order.TotalPrice</td>
+
+                    <td class="col-lg-1">
+                        <a class="btn btn-primary" asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

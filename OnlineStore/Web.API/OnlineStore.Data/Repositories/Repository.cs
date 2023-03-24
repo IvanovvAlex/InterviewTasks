@@ -18,17 +18,17 @@ namespace OnlineStore.Data.Repositories
             Context = context;
         }
 
-        public async Task AddAsync(TEntity entity)
+        public virtual async Task AddAsync(TEntity entity)
         {
             await Context.Set<TEntity>().AddAsync(entity);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await Context.Set<TEntity>().ToListAsync();
         }
 
-        public ValueTask<TEntity> GetByIdAsync(string id)
+        public virtual ValueTask<TEntity> GetByIdAsync(string id)
         {
             return Context.Set<TEntity>().FindAsync(id);
         }

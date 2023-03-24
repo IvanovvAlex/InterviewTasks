@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineStore.Common.Requests.OrderRequests;
 using OnlineStore.Common.Responses.OrderResponses;
 using OnlineStore.Web.Infrastructure.Interfaces;
@@ -8,10 +9,14 @@ namespace OnlineStore.Web.Controllers
     public class OrdersController : Controller
     {
         private readonly IOrderService _orderService;
+        private readonly ICompanyService _companyService;
+        private readonly IProductService _productService;
 
-        public OrdersController(IOrderService orderService)
+        public OrdersController(IOrderService orderService, ICompanyService companyService, IProductService productService)
         {
             _orderService = orderService;
+            _companyService = companyService;
+            _productService = productService;
         }
 
         public async Task<IActionResult> Index()
@@ -23,7 +28,8 @@ namespace OnlineStore.Web.Controllers
 
         public async Task<IActionResult> Create()
         {
-            //ViewData["CategoryId"] = new SelectList(context.Categories, "Id", "Title");
+            ViewData["CompanyId"] = new SelectList(await _companyService.GetAll(), "Id", "Name");
+            ViewData["ProductId"] = new SelectList(await _productService.GetAll(), "Id", "Name");
 
             return View();
         }
@@ -52,7 +58,8 @@ namespace OnlineStore.Web.Controllers
 
         public async Task<IActionResult> Update(string id)
         {
-            //ViewData["CategoryId"] = new SelectList(context.Categories, "Id", "Title");
+            ViewData["CompanyId"] = new SelectList(await _companyService.GetAll(), "Id", "Name");
+            ViewData["ProductId"] = new SelectList(await _productService.GetAll(), "Id", "Name");
 
             OrderResponse model = await _orderService.GetById(id);
             if (model == null)
@@ -64,7 +71,7 @@ namespace OnlineStore.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateOrderRequest request)
+        public async Task<IActionResult> Update(OrderResponse request)
         {
             OrderResponse response = await _orderService.Update(request);
             if (response == null)

@@ -19,7 +19,7 @@ namespace OnlineStore.Data.Entities
         public int Quantity { get; set; }
 
         [Required]
-        public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; init; } = DateTime.UtcNow;
        
         [Required]
         public string CompanyId { get; set; }

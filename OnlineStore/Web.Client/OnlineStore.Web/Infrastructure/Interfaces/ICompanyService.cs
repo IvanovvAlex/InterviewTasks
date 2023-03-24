@@ -1,6 +1,5 @@
 ﻿using OnlineStore.Common.Requests.CompanyRequests;
 using OnlineStore.Common.Responses.CompanyResponses;
-using OnlineStore.Data.Entities;
 
 namespace OnlineStore.Web.Infrastructure.Interfaces
 {

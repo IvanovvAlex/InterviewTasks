@@ -18,26 +18,68 @@ namespace OnlineStore.Data.Repositories
         {
         }
 
-        public async Task<Order> Update(Order order)
+        public override async Task<bool> AddAsync(Order entity)
         {
-            string orderId = order.Id;
+            Product product = await OnlineStoreDbContext.Products.FirstOrDefaultAsync(p => p.Id == entity.ProductId);
+            decimal productPrice = product.Price;
+            if (product.Quantity >= entity.Quantity)
+            {
+                product.Quantity -= entity.Quantity;
+                entity.TotalPrice = entity.Quantity * productPrice;
+                await Context.Set<Order>().AddAsync(entity);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-            Order editedOrder = await OnlineStoreDbContext.Orders
+        public async Task<Order> Update(Order editedOrder)
+        {
+            string orderId = editedOrder.Id;
+
+            Order order = await OnlineStoreDbContext.Orders
                 .FirstOrDefaultAsync(x => x.Id == orderId);
 
-            if (editedOrder == null)
+            if (order == null)
             {
                 return null;
             }
 
-            editedOrder.TotalPrice = order.TotalPrice;
-            editedOrder.Quantity = order.Quantity;
-            editedOrder.CompanyId = order.CompanyId;
-            editedOrder.Company = order.Company;
-            editedOrder.ProductId = order.ProductId;
-            editedOrder.Product = order.Product;
+            Product product = await OnlineStoreDbContext.Products.FirstOrDefaultAsync(p => p.Id == editedOrder.ProductId);
+            decimal productPrice = product.Price;
+            if (editedOrder.Quantity > order.Quantity)
+            {
+                product.Quantity -= Math.Abs(editedOrder.Quantity - order.Quantity);
+            }
+            else
+            {
+                product.Quantity += Math.Abs(order.Quantity - editedOrder.Quantity);
+            }
 
-            return editedOrder;
+            order.TotalPrice = editedOrder.Quantity * productPrice;
+            order.Quantity = editedOrder.Quantity;
+            order.CompanyId = editedOrder.CompanyId;
+            order.ProductId = editedOrder.ProductId;
+
+            return order;
+        }
+
+        public override async ValueTask<Order> GetByIdAsync(string id)
+        {
+            return await OnlineStoreDbContext.Orders
+                .Include(c => c.Company)
+                .Include(p => p.Product)
+                .FirstOrDefaultAsync(o => o.Id == id);
+        }
+
+        public override async Task<IEnumerable<Order>> GetAllAsync()
+        {
+            return await OnlineStoreDbContext.Orders
+                .Include(c => c.Company)
+                .Include(p => p.Product)
+                .ToListAsync();
         }
     }
 }

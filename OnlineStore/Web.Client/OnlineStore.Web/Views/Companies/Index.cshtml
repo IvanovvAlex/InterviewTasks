@@ -2,18 +2,32 @@
 
 @{
 }
-@foreach (var item in Model)
-{
-    <!-- Post preview-->
-    <div class="post-preview">
-        <a asp-controller="Company" asp-action="Details" asp-route-id="@item.Id">
-            
-            <h4 class="post-title">@item.Name</h4>
-            <h6 class="post-subtitle">@item.OwnerFullName</h6>
-            <h6 class="post-subtitle">@item.UniqueIdentificationCode</h6>
+<div class="container text-center">
+    <a class="btn btn-primary center mt-4 mb-4 w-25" asp-controller="Companies" asp-action="Create">Create new company</a>
 
-        </a>
-    </div>
-    <!-- Divider-->
-    <hr class="my-4" />
-}
+    <table class="table table-hover">
+        <thead>
+            <tr class="row">
+                <th scope="col" class="col-lg-2">Name</th>
+                <th scope="col" class="col-lg-3">ID Code</th>
+                <th scope="col" class="col-lg-3">Owner</th>
+                <th scope="col" class="col-lg-3">Country</th>
+                <th scope="col" class="col-lg-1"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var company in Model)
+            {
+                <tr class="row">
+                    <td class="col-lg-2">@company.Name</td>
+                    <td class="col-lg-3">@company.UniqueIdentificationCode</td>
+                    <td class="col-lg-3">@company.OwnerFullName</td>
+                    <td class="col-lg-3">@company.Country</td>
+                    <td class="col-lg-1">
+                        <a class="btn btn-primary" asp-controller="Companies" asp-action="Details" asp-route-id="@company.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

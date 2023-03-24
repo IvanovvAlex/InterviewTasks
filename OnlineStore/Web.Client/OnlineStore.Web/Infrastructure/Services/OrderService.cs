@@ -18,6 +18,7 @@ namespace OnlineStore.Web.Infrastructure.Services
             _serializerOptions = new JsonSerializerOptions()
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+
             };
         }
 
@@ -36,7 +37,7 @@ namespace OnlineStore.Web.Infrastructure.Services
 
         public async Task Delete(string id)
         {
-            await _httpClient.GetAsync($"/api/Orders/Delete/{id}");
+            await _httpClient.DeleteAsync($"/api/Orders/Delete/{id}");
         }
 
         public async Task<IEnumerable<GetAllOrdersResponse>> GetAll()
@@ -59,9 +60,9 @@ namespace OnlineStore.Web.Infrastructure.Services
             return order;
         }
 
-        public async Task<OrderResponse> Update(UpdateOrderRequest request)
+        public async Task<OrderResponse> Update(OrderResponse request)
         {
-            string requestJson = JsonSerializer.Serialize<UpdateOrderRequest>(request, _serializerOptions);
+            string requestJson = JsonSerializer.Serialize<OrderResponse>(request, _serializerOptions);
 
             HttpResponseMessage response = await _httpClient.PutAsJsonAsync("/api/Orders/Update", requestJson);
             string responseContent = await response.Content.ReadAsStringAsync();
