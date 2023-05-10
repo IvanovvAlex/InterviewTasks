@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DevelopSoft.Models.Customer.CustomerViewModel>
+
+<h2>Search Customers</h2>
+
+
+<form method="post" action="@Url.Action("Search", "Customer")">
+    <div class="form-group">
+        <label for="companyName">Company Name</label>
+        <input type="text" id="companyName" name="companyName" class="form-control" />
+        <div class="form-check form-check-inline">
+            <input type="radio" id="equal" name="searchType" value="Equal" class="form-check-input" checked="checked" />
+            <label for="equal" class="form-check-label">Equal</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="startsWith" name="searchType" value="StartsWith" class="form-check-input" />
+            <label for="startsWith" class="form-check-label">Starts With</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="endsWith" name="searchType" value="EndsWith" class="form-check-input" />
+            <label for="endsWith" class="form-check-label">Ends With</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="middle" name="searchType" value="Middle" class="form-check-input" />
+            <label for="middle" class="form-check-label">Middle</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="contactName">Contact Name</label>
+        <input type="text" id="contactName" name="contactName" class="form-control" />
+        <div class="form-check form-check-inline">
+            <input type="radio" id="equal2" name="searchType2" value="Equal" class="form-check-input" />
+            <label for="equal2" class="form-check-label">Equal</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="startsWith2" name="searchType2" value="StartsWith" class="form-check-input" checked="checked" />
+            <label for="startsWith2" class="form-check-label">Starts With</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="endsWith2" name="searchType2" value="EndsWith" class="form-check-input" />
+            <label for="endsWith2" class="form-check-label">Ends With</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="middle2" name="searchType2" value="Middle" class="form-check-input" />
+            <label for="middle2" class="form-check-label">Middle</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" class="form-control" />
+        <div class="form-check form-check-inline">
+            <input type="radio" id="equal3" name="searchType3" value="Equal" class="form-check-input" />
+            <label for="equal3" class="form-check-label">Equal</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="startsWith3" name="searchType3" value="StartsWith" class="form-check-input" checked="checked" />
+            <label for="startsWith3" class="form-check-label">Starts With</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="endsWith3" name="searchType3" value="EndsWith" class="form-check-input" />
+            <label for="endsWith3" class="form-check-label">Ends With</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" id="middle3" name="searchType3" value="Middle" class="form-check-input" />
+            <label for="middle3" class="form-check-label">Middle</label>
+        </div>
+    </div>
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+@if (Model != null)
+{
+    @if (Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Contact Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Total Orders</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>@customer.CompanyName</td>
+                        <td>@customer.ContactName</td>
+                        <td>@customer.Phone</td>
+                        <td>@customer.Address</td>
+                        @*                    <td>@customer.TotalOrders</td>
+            *@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No customers found.</p>
+    }
+}

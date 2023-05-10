@@ -15,7 +15,7 @@ namespace DevelopSoft.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Search", "Customer");
         }
 
         public IActionResult Privacy()
