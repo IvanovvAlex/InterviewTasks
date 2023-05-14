@@ -5,7 +5,7 @@ namespace DevelopSoft.Data.Models;
 
 public partial class Customer
 {
-    public string CustomerId { get; set; } = null!;
+    public string CustomerID { get; set; } = null!;
 
     public string CompanyName { get; set; } = null!;
 
@@ -29,5 +29,5 @@ public partial class Customer
 
     public string? Email { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
 }

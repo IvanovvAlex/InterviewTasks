@@ -24,78 +24,86 @@ namespace DevelopSoft.Controllers
         [HttpPost]
         public async Task<IActionResult> Search(string companyName, string contactName, string phone, string searchType)
         {
-            IQueryable<Customer> query = _context.Customers.Include(c => c.Orders);
-
-            if (!string.IsNullOrWhiteSpace(companyName))
+            try
             {
-                switch (searchType)
+
+                ICollection<Customer> query = await _context.Customers.Include(c => c.Orders).AsNoTracking().ToListAsync();
+
+                if (!string.IsNullOrWhiteSpace(companyName))
                 {
-                    case "Equal":
-                        query = query.Where(c => c.CompanyName == companyName);
-                        break;
-                    case "StartsWith":
-                        query = query.Where(c => c.CompanyName.StartsWith(companyName));
-                        break;
-                    case "EndsWith":
-                        query = query.Where(c => c.CompanyName.EndsWith(companyName));
-                        break;
-                    case "Middle":
-                        query = query.Where(c => c.CompanyName.Contains(companyName));
-                        break;
+                    switch (searchType)
+                    {
+                        case "Equal":
+                            query = query.Where(c => c.CompanyName == companyName).ToList();
+                            break;
+                        case "StartsWith":
+                            query = query.Where(c => c.CompanyName.StartsWith(companyName)).ToList();
+                            break;
+                        case "EndsWith":
+                            query = query.Where(c => c.CompanyName.EndsWith(companyName)).ToList();
+                            break;
+                        case "Middle":
+                            query = query.Where(c => c.CompanyName.Contains(companyName)).ToList();
+                            break;
+                    }
                 }
-            }
 
-            if (!string.IsNullOrWhiteSpace(contactName))
-            {
-                switch (searchType)
+                if (!string.IsNullOrWhiteSpace(contactName))
                 {
-                    case "Equal":
-                        query = query.Where(c => c.ContactName == contactName);
-                        break;
-                    case "StartsWith":
-                        query = query.Where(c => c.ContactName.StartsWith(contactName));
-                        break;
-                    case "EndsWith":
-                        query = query.Where(c => c.ContactName.EndsWith(contactName));
-                        break;
-                    case "Middle":
-                        query = query.Where(c => c.ContactName.Contains(contactName));
-                        break;
+                    switch (searchType)
+                    {
+                        case "Equal":
+                            query = query.Where(c => c.ContactName == contactName).ToList();
+                            break;
+                        case "StartsWith":
+                            query = query.Where(c => c.ContactName.StartsWith(contactName)).ToList();
+                            break;
+                        case "EndsWith":
+                            query = query.Where(c => c.ContactName.EndsWith(contactName)).ToList();
+                            break;
+                        case "Middle":
+                            query = query.Where(c => c.ContactName.Contains(contactName)).ToList();
+                            break;
+                    }
                 }
-            }
 
-            if (!string.IsNullOrWhiteSpace(phone))
-            {
-                switch (searchType)
+                if (!string.IsNullOrWhiteSpace(phone))
                 {
-                    case "Equal":
-                        query = query.Where(c => c.Phone == phone);
-                        break;
-                    case "StartsWith":
-                        query = query.Where(c => c.Phone.StartsWith(phone));
-                        break;
-                    case "EndsWith":
-                        query = query.Where(c => c.Phone.EndsWith(phone));
-                        break;
-                    case "Middle":
-                        query = query.Where(c => c.Phone.Contains(phone));
-                        break;
+                    switch (searchType)
+                    {
+                        case "Equal":
+                            query = query.Where(c => c.Phone == phone).ToList();
+                            break;
+                        case "StartsWith":
+                            query = query.Where(c => c.Phone.StartsWith(phone)).ToList();
+                            break;
+                        case "EndsWith":
+                            query = query.Where(c => c.Phone.EndsWith(phone)).ToList();
+                            break;
+                        case "Middle":
+                            query = query.Where(c => c.Phone.Contains(phone)).ToList();
+                            break;
+                    }
                 }
+
+               
+                var results = query.Select(c => new CustomerViewModel
+                {
+                    CompanyName = c.CompanyName,
+                    ContactName = c.ContactName,
+                    Phone = c.Phone,
+                    Address = c.Address,
+                    TotalOrders = c.Orders.Count(),
+                });
+
+
+                return View(results);
+
             }
-
-            
-
-            var results = query.Select(c => new CustomerViewModel
+            catch (Exception ex)
             {
-                CompanyName = c.CompanyName,
-                ContactName = c.ContactName,
-                Phone = c.Phone,
-                Address = c.Address,
-                TotalOrders = c.Orders.Count
-            });
-
-
-            return View(results);
+                throw ex;
+            }
         }
     }
 }

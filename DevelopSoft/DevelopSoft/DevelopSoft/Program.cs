@@ -9,7 +9,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<NorthwindContext>(options =>
     options.UseSqlServer("Server=.;Database=Northwind;Integrated Security=True;TrustServerCertificate=true;"));
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

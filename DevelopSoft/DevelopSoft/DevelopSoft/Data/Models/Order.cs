@@ -7,7 +7,7 @@ public partial class Order
 {
     public int OrderId { get; set; }
 
-    public string? CustomerId { get; set; }
+    public string? CustomerID { get; set; }
 
     public int? EmployeeId { get; set; }
 
