@@ -1,4 +1,5 @@
 using DevelopSoft.Data;
+using DevelopSoft.Services.Customers;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<NorthwindContext>(options =>
     options.UseSqlServer("Server=.;Database=Northwind;Integrated Security=True;TrustServerCertificate=true;"));
+
+builder.Services.AddTransient<ICustomerService, CustomerService>();
 
 var app = builder.Build();
 
