@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.API", "Web.API", "{845097EE-AD4A-4870-851C-1BC8BA5AB8E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBet.API", "Web.API\eBet.API\eBet.API.csproj", "{A71AC0D0-9F79-481F-991C-6DD65545A429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBet.Common", "Web.API\eBet.Common\eBet.Common.csproj", "{86D4EB05-3856-462C-BCDC-A767DA67FA60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBet.Core", "Web.API\eBet.Core\eBet.Core.csproj", "{0D0C0D7E-05BD-4269-A344-6181D02F45CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBet.Data", "eBet.Data\eBet.Data.csproj", "{730D7C53-EA47-4010-8FD0-7B764208DB13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBet.Domain", "Web.API\eBet.Domain\eBet.Domain.csproj", "{78F80F08-62E7-4B71-849F-D5CA5CB29FAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A71AC0D0-9F79-481F-991C-6DD65545A429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71AC0D0-9F79-481F-991C-6DD65545A429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71AC0D0-9F79-481F-991C-6DD65545A429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71AC0D0-9F79-481F-991C-6DD65545A429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86D4EB05-3856-462C-BCDC-A767DA67FA60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86D4EB05-3856-462C-BCDC-A767DA67FA60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86D4EB05-3856-462C-BCDC-A767DA67FA60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86D4EB05-3856-462C-BCDC-A767DA67FA60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D0C0D7E-05BD-4269-A344-6181D02F45CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0C0D7E-05BD-4269-A344-6181D02F45CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0C0D7E-05BD-4269-A344-6181D02F45CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0C0D7E-05BD-4269-A344-6181D02F45CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{730D7C53-EA47-4010-8FD0-7B764208DB13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{730D7C53-EA47-4010-8FD0-7B764208DB13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{730D7C53-EA47-4010-8FD0-7B764208DB13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{730D7C53-EA47-4010-8FD0-7B764208DB13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78F80F08-62E7-4B71-849F-D5CA5CB29FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78F80F08-62E7-4B71-849F-D5CA5CB29FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78F80F08-62E7-4B71-849F-D5CA5CB29FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78F80F08-62E7-4B71-849F-D5CA5CB29FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A71AC0D0-9F79-481F-991C-6DD65545A429} = {845097EE-AD4A-4870-851C-1BC8BA5AB8E1}
+		{86D4EB05-3856-462C-BCDC-A767DA67FA60} = {845097EE-AD4A-4870-851C-1BC8BA5AB8E1}
+		{0D0C0D7E-05BD-4269-A344-6181D02F45CC} = {845097EE-AD4A-4870-851C-1BC8BA5AB8E1}
+		{730D7C53-EA47-4010-8FD0-7B764208DB13} = {845097EE-AD4A-4870-851C-1BC8BA5AB8E1}
+		{78F80F08-62E7-4B71-849F-D5CA5CB29FAB} = {845097EE-AD4A-4870-851C-1BC8BA5AB8E1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29CF1C9C-281A-43E5-B984-0574F7EC26A5}
+	EndGlobalSection
+EndGlobal
